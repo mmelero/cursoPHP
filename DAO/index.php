@@ -21,7 +21,17 @@ require_once("config.php");
 //Outra maneira de efetuar lista de usuarios com os caracteres informados para pesquisa, sem atribuir a uma variavel
 //echo json_encode(Usuario::search("me"));
 
-$login = new Usuario();
-$login->login("mmelero","mar@196");
-echo $login;
+//$login = new Usuario();
+//$login->login("mmelero","mar@196526");
+//echo $login;
+
+//Incluindo um login
+//$aluno = new Usuario("aluno","@luno01");
+//$aluno->insert();
+//echo $aluno;
+
+$usuario = new Usuario();
+$usuario->loadById(61);
+$usuario->update("zeSilva","123456");
+echo $usuario;
 ?>
