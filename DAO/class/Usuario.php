@@ -151,12 +151,25 @@
 
             $this->setDeslogin($login);
             $this->setDessenha($passorwd);
+            $this->setDtcadastro(new DateTime());
 
             $sql = new sql();
             $sql->query("UPDATE usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID",
                 array(  ':LOGIN'=>$this->getDeslogin(),
                         ':PASSWORD'=>$this->getDessenha(),
                         'ID'=>$this->getIdusuario()));
+        }
+
+        public function delete(){
+            $sql = new sql();
+            $sql->query("DELETE FROM usuarios WHERE idusuario = :ID",
+                array(':ID'=>$this->getIdusuario()));
+
+            $this->setIdusuario(0);
+            $this->setDeslogin("");
+            $this->setDessenha("");
+            $this->setDtcadastro(new DateTime());
+
         }
 
         public function __toString()
